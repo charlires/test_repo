@@ -1,0 +1,22 @@
+name: Custom Actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      user_name: 
+        description: "Username"
+        type: string
+
+# env:
+#   NODE_VERSION: '16'
+#   DAY_OF_WEEK: Monday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use custom action
+        uses: ./actions/custom_actions
+        with: 
+          user_name: ${{ github.event.inputs.user_name }}
