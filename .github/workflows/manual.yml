@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       user_name: 
-        description: "asdfasdf"
+        description: "Username"
         type: string
 
 env:
@@ -19,7 +19,7 @@ jobs:
     steps:
       - id: step1
         name: Print Hello World
-        run: echo "$user_name"
+        run: echo $user_name
 
 
 
