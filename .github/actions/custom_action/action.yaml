@@ -1,13 +1,13 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Mi GH Action'
+description: 'Esta es una action de prueba'
 inputs:
-  user-name:  # id of input
-    description: 'Who to greet'
+  servicio:  # id of input
+    description: 'nombre del servicio'
     required: true
-    default: 'World'
+    default: 'games-service'
 outputs:
-  random-number:
-    description: "Random number"
+  status:
+    description: "status"
     value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
