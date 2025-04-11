@@ -7,9 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  create:
-    branches:
-      feature/**
 
 env:
   NODE_VERSION: '16'
