@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  create:
+    branches:
+      feature/**
+
+env:
+  NODE_VERSION: '16'
+  DAY_OF_WEEK: Monday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: qa
+
+    steps:
+      - name: run app
+        run: python main.py
+        env: 
+          PORT: 8080
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
+      - id: step1
+        name: Print Hello World
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+
+      - id: step2
+        name: Print Hello World
+        run: echo "node_version=16" >> "$GITHUB_OUTPUT"
+
+      - id: custom_action
+        uses: jafet_action
+        with:
+          user_name: "carlos"
+
+      - id: custom_action_output_use
+        run: echo ${{ steps.custom_action.outputs.random-number }} 
+
+      - id: step3
+        run: echo ${{ steps.step1.outputs.test }} 
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: $NODE_VERSION
+
+
+
+
+      # - name: Install dependencies
+      #   run: npm install
+
+      # - name: Run tests
+      #   run: npm test
