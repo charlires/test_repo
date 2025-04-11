@@ -19,7 +19,7 @@ jobs:
     steps:
       - id: step1
         name: Print Hello World
-        run: echo $user_name
+        run: echo ${{ github.event.inputs.user_name }}
 
 
 
