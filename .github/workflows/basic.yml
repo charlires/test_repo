@@ -1,4 +1,4 @@
-name: CI
+name: Basic Workflow
 
 on:
   push:
@@ -8,54 +8,25 @@ on:
     branches:
       - main
 
+# variables de 
+# https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#defaults
 env:
   NODE_VERSION: '16'
-  DAY_OF_WEEK: Monday
 
 jobs:
   build:
+    # runners
+    # https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
     runs-on: ubuntu-latest
+    # ambientes variables y secretos
+    # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/using-environments-for-deployment#about-environments
     environment: qa
 
     steps:
-      - name: run app
-        run: python main.py
-        env: 
-          PORT: 8080
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-
       - id: step1
         name: Print Hello World
         run: echo "test=hello" >> "$GITHUB_OUTPUT"
 
       - id: step2
-        name: Print Hello World
-        run: echo "node_version=16" >> "$GITHUB_OUTPUT"
-
-      - id: custom_action
-        uses: jafet_action
-        with:
-          user_name: "carlos"
-
-      - id: custom_action_output_use
-        run: echo ${{ steps.custom_action.outputs.random-number }} 
-
-      - id: step3
+        name: Usar variables del output de otro step 
         run: echo ${{ steps.step1.outputs.test }} 
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: $NODE_VERSION
-
-
-
-
-      # - name: Install dependencies
-      #   run: npm install
-
-      # - name: Run tests
-      #   run: npm test

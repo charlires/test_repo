@@ -1,0 +1,21 @@
+name: Variables en GHA
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: '16'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: step1
+        name: Usar variable de ambiente
+        run: echo ${{ env.NODE_VERSION }}
