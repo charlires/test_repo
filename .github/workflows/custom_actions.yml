@@ -3,7 +3,7 @@ name: Custom Actions
 on:
   workflow_dispatch:
     inputs:
-      user_name: 
+      user-name: 
         description: "Username"
         type: string
 
@@ -23,9 +23,9 @@ jobs:
         name: Use custom action
         uses: ./.github/actions/custom_action
         with: 
-          user_name: ${{ github.event.inputs.user_name }}
+          user_name: ${{ github.event.inputs.user-name }}
 
       - name: 
-        run: echo ${{ steps.custom_action1.outputs.random_number }}
+        run: echo ${{ steps.custom_action1.outputs.random-number }}
 
       

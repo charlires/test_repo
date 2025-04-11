@@ -1,7 +1,7 @@
 name: 'Hello World'
 description: 'Greet someone'
 inputs:
-  user_name:  # id of input
+  user-name:  # id of input
     description: 'Who to greet'
     required: true
     default: 'World'
@@ -16,7 +16,7 @@ runs:
       run: echo "Hello $INPUT_WHO_TO_GREET."
       shell: bash
       env:
-        INPUT_WHO_TO_GREET: ${{ inputs.user_name }}
+        INPUT_WHO_TO_GREET: ${{ inputs.user-name }}
 
     - name: Random Number Generator
       id: random-number-generator
