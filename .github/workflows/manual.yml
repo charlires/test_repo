@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '16'
+  DAY_OF_WEEK: Monday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: qa
+
+    steps:
+      - id: step1
+        name: Print Hello World
+        run: echo "Carlos"
+
+
+
+      # - name: Install dependencies
+      #   run: npm install
+
+      # - name: Run tests
+      #   run: npm test
