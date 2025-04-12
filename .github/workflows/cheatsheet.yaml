@@ -26,7 +26,6 @@ on:
     branches-ignore:
       - 'mona/octocat'
       - 'releases/**-alpha'
-    # Sequence of patterns matched against refs/tags
     tags-ignore:
       - v2
       - v1.*
@@ -58,7 +57,7 @@ on:
   # acepta inputs
   workflow_dispatch:
     # convencion de nombres solo camelcase o underscore
-    # description, type, requied, default, option (choice)
+    # description, type, requied, default, options (choice)
     inputs:
       user_name: 
         description: "Username"
@@ -110,12 +109,29 @@ jobs:
       - id: custom_action1
         name: Use custom action
         uses: ./.github/actions/custom_action
-        # uses: octo-org/example-repo/.github/actions/reusable-action.yml@main
+        # uses: octo-org/example-repo/.github/actions/reusable-action.yml@v3.0.1
+        # in version
+        # - branch e.g. main, feature/x
+        # - tag e.g. v3.0.1
+        # - commmit sha e.g. hash
         with: 
           user-name: ${{ github.event.inputs.user_name }}
 
       - name: 
         run: echo ${{ steps.custom_action1.outputs.random-number }}
+
+        # https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+      - name: build docker image
+        run: docker build .......
+
+      - name: docker login 
+        run: docker login
+
+      - name: docker push ghcr GitHub Container Registry
+        run: docker push ghcr.io/NAMESPACE/IMAGE_NAME:TAG
+
+      - name: deploy to cloud run
+        run: gcloud run deploy ......
 
       - name: condicional
         if: ${{ inputs.print_tags }} 
