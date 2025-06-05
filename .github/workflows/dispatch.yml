@@ -1,0 +1,23 @@
+name: Execucion Manual
+
+on:
+  workflow_dispatch:
+    # description, type, requied, default, options (choice)
+    inputs:
+      username: 
+        description: "Nombre de usuario"
+        type: string
+      environment:
+        description: 'Entorno'
+        type: environment
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Imprime nombre de usuario
+        run: echo ${{ github.event.inputs.username }}
+
+      

@@ -7,7 +7,18 @@ on:
         description: "Username"
         type: string
 
+# env:
+#   NODE_VERSION: '16'
+#   DAY_OF_WEEK: Monday
+
 jobs:
+  # call-workflow-passing-data:
+  #   uses: octo-org/example-repo/.github/workflows/reusable-workflow.yml@main
+  #   with:
+  #     config-path: .github/labeler.yml
+  #   secrets:
+  #     personal_access_token: ${{ secrets.token }}
+
   build:
     runs-on: ubuntu-latest
 
@@ -18,6 +29,7 @@ jobs:
       - id: custom_action1
         name: Use custom action
         uses: ./.github/actions/custom_action
+        # uses: octo-org/example-repo/.github/actions/reusable-action.yml@main
         with: 
           user-name: ${{ github.event.inputs.user-name }}
 

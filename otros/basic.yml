@@ -30,3 +30,16 @@ jobs:
       - id: step2
         name: Usar variables del output de otro step 
         run: echo ${{ steps.step1.outputs.test }} 
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '^1.13.1' # The Go version to download (if necessary) and use.
+      - run: go version
+
+      - name: test
+        run: go run main.go
+
+        

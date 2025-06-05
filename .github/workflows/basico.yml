@@ -1,0 +1,26 @@
+name: Workflow Basico
+
+on:
+  pull_request:
+    branches:
+      - main
+env:
+  GO_VERSION: '^1.13.1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - run: go version
+
+      - name: test
+        run: go test ../.
+
+        

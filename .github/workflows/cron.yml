@@ -1,0 +1,29 @@
+name: Custom Actions
+
+on:
+  # usando la nomenclature de cron
+  # https://crontab.cronhub.io/
+  schedule:
+    - cron: "0 11 * * 1" # Lunes 6 AM EST (1100 UTC)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: build docker image
+        run: docker build .......
+
+      - name: docker login 
+        run: docker login
+
+      - name: docker push ghcr GitHub Container Registry
+        run: docker push ghcr.io/NAMESPACE/IMAGE_NAME:TAG
+
+      - name: deploy to cloud run
+        run: gcloud run deploy ......
+
+      
