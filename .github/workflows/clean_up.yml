@@ -7,6 +7,10 @@ jobs:
   clean-up:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Run clean up script
         run: |
           bash ./cleanup.sh
