@@ -2,6 +2,13 @@ name: Clean Up
 
 on:
   workflow_dispatch:
+    inputs:
+      cleanup_level:
+        type: choice
+        description: Select clean up LEVEL 
+        options:
+          - BASIC
+          - COMPLETE
 
 jobs:
   clean-up:
@@ -10,7 +17,9 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Run clean up script
         run: |
           bash ./cleanup.sh
+        env: 
+            LEVEL: ${{ inputs.cleanup_level }}
