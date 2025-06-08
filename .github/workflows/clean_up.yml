@@ -1,0 +1,12 @@
+name: Clean Up
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clean-up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run clean up script
+        run: |
+          bash ./cleanup.sh
