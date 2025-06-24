@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func greet() string {
-    return "Hola, mundo!"
+    // Cambios introducidos en rama1
+    return "Hola desde rama1"
 }
 
 func main() {
