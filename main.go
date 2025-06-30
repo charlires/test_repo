@@ -6,11 +6,11 @@ import (
 )
 
 func fooHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, "foo")
+    fmt.Fprintln(w, "Hi, foo")
 }
 
 func barHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, "bar")
+    fmt.Fprintln(w, "Hi, bar")
 }
 
 func main() {
