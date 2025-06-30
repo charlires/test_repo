@@ -5,8 +5,12 @@ import (
     "net/http"
 )
 
-func holaHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, "Hola, mundo!")
+func fooHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintln(w, "foo")
+}
+
+func barHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintln(w, "bar")
 }
 
 func main() {
@@ -14,7 +18,8 @@ func main() {
     if port == "" {
         port = "8080"
     }
-    http.HandleFunc("/", holaHandler)
+    http.HandleFunc("/foo", fooHandler)
+    http.HandleFunc("/bar", barHandler)
     fmt.Printf("Server listening on :%s\n", port)
     http.ListenAndServe(fmt.Sprintf(":%s"port), nil)
 }
