@@ -1,9 +1,7 @@
 name: Usando Vars y Secrets
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch: 
 env:
   GO_VERSION: '^1.13.1'
 
