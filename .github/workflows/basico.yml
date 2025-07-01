@@ -1,4 +1,4 @@
-name: Workflow Basico
+name: Usando Vars y Secrets
 
 on:
   pull_request:
@@ -9,8 +9,9 @@ env:
 
 jobs:
   build:
+    environment: qa
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,7 +21,9 @@ jobs:
           go-version: ${{ env.GO_VERSION }}
       - run: go version
 
-      - name: test
-        run: go test ../.
-
+      - name: Call API
+        run: | 
+          curl \
+            -H "Authorization: Bearer ${{ secrets.API_KEY }}" \
+            ${{ vars.API_URL }}
         
