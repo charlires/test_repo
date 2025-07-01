@@ -23,5 +23,5 @@ jobs:
         run: | 
           curl \
             -H "Authorization: Bearer ${{ secrets.API_KEY }}" \
-            ${{ vars.API_URL }}
+            ${{ vars.API_URL }}/get
         
