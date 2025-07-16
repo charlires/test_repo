@@ -11,14 +11,16 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
-      - name: Leer labels y reviewers con GitHub CLI
+    #   - name: Leer labels y reviewers con GitHub CLI
+    #     run: |
+    #       echo "Labels del PR:"
+    #       gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name'
+    #     env:
+    #       PR_NUMBER: ${{ github.event.pull_request.number }}
+    #       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Leer labels del evento de github actions
         run: |
-          echo "Labels del PR:"
-          gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name'
-          echo "Labels del PR2: $LABELS"
-        #   echo "Autor del PR:"
-        #   gh pr view ${{ env.PR_NUMBER }} --json author --jq '.author.name'
+            echo "Labels del PR: $LABELS"
         env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LABELS: ${{ join(github.event.pull_request.labels.*.name, ', ') }}
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
