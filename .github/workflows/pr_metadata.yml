@@ -12,11 +12,17 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Leer labels y reviewers con GitHub CLI
+        id: get-labels
         run: |
           echo "Labels del PR:"
-          gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name'
-          gh pr view ${{ env.PR_NUMBER }} --json author --jq '.author.name'
+          LABELS=$(gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name')
+          echo "labels=$LABELS" >> "$GITHUB_OUTPUT"
+        #   echo "Autor del PR:"
+        #   gh pr view ${{ env.PR_NUMBER }} --json author --jq '.author.name'
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
+      - name: Imprime labels
+        run: | 
+            echo ${{ steps.get-labels.outputs.labels }}
