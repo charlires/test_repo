@@ -15,7 +15,7 @@ jobs:
         id: get-labels
         run: |
           echo "Labels del PR:"
-          LABELS=$(gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name')
+          LABELS=$(gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name' | paste -sd "," -)
           echo "labels=$LABELS" >> "$GITHUB_OUTPUT"
         #   echo "Autor del PR:"
         #   gh pr view ${{ env.PR_NUMBER }} --json author --jq '.author.name'
