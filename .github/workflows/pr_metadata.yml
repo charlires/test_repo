@@ -17,4 +17,5 @@ jobs:
           gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name'
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
