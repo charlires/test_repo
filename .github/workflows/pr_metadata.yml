@@ -15,9 +15,10 @@ jobs:
         run: |
           echo "Labels del PR:"
           gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name'
-          echo "Labels del PR2: ${{github.event.pull_request.labels }}"
+          echo "Labels del PR2: $LABELS"
         #   echo "Autor del PR:"
         #   gh pr view ${{ env.PR_NUMBER }} --json author --jq '.author.name'
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ', ') }}
