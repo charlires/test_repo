@@ -31,7 +31,7 @@ jobs:
     if: ${{ always() }}
     steps: 
       - name: test name
-        uses: ./test-workflow2.yml
+        uses: ./.github/workflows/test-workflow2.yml
         with: 
           name_required: ${{ needs.test2.outputs.otest2 }}
 
