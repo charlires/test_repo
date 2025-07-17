@@ -23,7 +23,7 @@ jobs:
   test3:
     runs-on: ubuntu-latest
     needs: [ test2 ]
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && needs.test2.result == 'success' }}
     steps:
       - run: |
           echo "principal3"
