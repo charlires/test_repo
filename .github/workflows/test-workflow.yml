@@ -21,7 +21,8 @@ jobs:
       otest2: "Hello2"
   test3:
     runs-on: ubuntu-latest
-    needs: [ test2 ]
+    needs: [ test1, test2 ]
+    if: ${{ needs.test1.result == 'skipped' }}
     steps:
       - run: |
           echo "principal3"
