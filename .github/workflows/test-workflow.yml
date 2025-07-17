@@ -17,6 +17,7 @@ jobs:
     steps:
       - run: |
           echo "principal2"
+          exit 1
     outputs: 
       otest2: "Hello2"
   test3:
