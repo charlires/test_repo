@@ -12,6 +12,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: |
+    - name: asdf
+      shell: bash
+      run: |
         echo "Required: ${{ inputs.name_required }}"
         echo "Not Required: ${{ inputs.name_not_required }}"
