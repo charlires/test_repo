@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v3
         
       - name: test name
-        uses: ./.github/workflows/test-workflow2.yml
+        uses: .github/workflows/test-workflow2.yml
         with: 
           name_required: ${{ needs.test2.outputs.otest2 }}
 
