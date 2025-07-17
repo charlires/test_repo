@@ -30,6 +30,9 @@ jobs:
     needs: [test2]
     if: ${{ always() }}
     steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
       - name: test name
         uses: ./.github/workflows/test-workflow2.yml
         with: 
