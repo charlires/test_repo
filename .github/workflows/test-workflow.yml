@@ -27,7 +27,7 @@ jobs:
 
   test_name: 
     runs-on: ubuntu-latest
-    needs: [test2]
+    needs: [test1, test2]
     if: ${{ always() }}
     steps: 
       - name: Checkout repository
@@ -36,7 +36,8 @@ jobs:
       - name: test name
         uses: ./.github/actions/test
         with: 
-          name_required: ${{ needs.test2.outputs.otest2 }}
+          name_required: ${{ needs.test1.outputs.otest1 }}
+          name_non_required: ${{ needs.test2.outputs.otest2 }}
 
   test3:
     runs-on: ubuntu-latest
