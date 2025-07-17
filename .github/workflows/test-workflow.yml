@@ -34,9 +34,9 @@ jobs:
     needs: [ test1, test2, test3 ]
     if: ${{ always() }}
     env: 
-      TEST1: ${{ needs.test1.outputs }}
-      TEST2: ${{ needs.test2.outputs }}
-      TEST3: ${{ needs.test3.outputs }}
+      TEST1: ${{ toJson(needs.test1.outputs) }}
+      TEST2: ${{ toJson(needs.test2.outputs) }}
+      TEST3: ${{ toJson(needs.test3.outputs) }}
     steps:
       - run: |
           echo "principal4"
