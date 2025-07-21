@@ -9,15 +9,14 @@ jobs:
     steps:
       - run: |
           echo "principal1 test1"
-      - run: |
-          exit 1
-        id: exit
+      # - run: |
+      #     exit 1
+      #   id: exit
       - run: |
           echo "principal1 test 2"
-        if: ${{ !cancelled() && steps.exit.outcome == 'success' }}
+        if: ${{ true }}
       - run: |
           echo "principal1 test 3"
-        if: ${{ !cancelled() && steps.exit.outcome == 'failed' }}
     outputs: 
       otest1: "Hello1"
 
