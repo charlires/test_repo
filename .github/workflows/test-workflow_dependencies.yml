@@ -8,7 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "principal1"
+          echo "principal1 test1"
+      - run: |
+          exit 1
+        id: exit
+      - run: |
+          echo "principal1 test 2"
+        if: ${{ steps.exit.outcome == 'success' }}
+      - run: |
+          echo "principal1 test 3"
     outputs: 
       otest1: "Hello1"
 
