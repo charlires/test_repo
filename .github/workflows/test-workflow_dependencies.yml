@@ -17,6 +17,7 @@ jobs:
         if: ${{ steps.exit.outcome == 'success' }}
       - run: |
           echo "principal1 test 3"
+        if: ${{ steps.exit.outcome == 'failed' }}
     outputs: 
       otest1: "Hello1"
 
