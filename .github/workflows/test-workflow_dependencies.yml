@@ -14,7 +14,7 @@ jobs:
       #   id: exit
       - run: |
           echo "principal1 test 2"
-        if: ${{ true }}
+        if: ${{ false }}
       - run: |
           echo "principal1 test 3"
     outputs: 
