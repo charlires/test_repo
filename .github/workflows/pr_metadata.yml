@@ -21,6 +21,6 @@ jobs:
 
       - name: Leer labels del evento de github actions
         run: |
-            echo "Labels del PR: $LABELS"
-        env:
-          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+            echo "${{ github.event.pull_request }}"
+        # env:
+        #   LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
