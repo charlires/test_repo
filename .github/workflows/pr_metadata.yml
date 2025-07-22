@@ -19,7 +19,7 @@ jobs:
       - name: Leer labels y reviewers con GitHub CLI
         run: |
           echo "Labels del PR:"
-          echo "$(gh pr view ${{ env.PR_NUMBER }} --json)"
+          echo "$(gh pr view ${{ env.PR_NUMBER }})"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
