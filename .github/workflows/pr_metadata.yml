@@ -11,7 +11,7 @@ jobs:
       - name: Leer labels del evento de github actions
         run: |
             echo "Event Object"
-            ${{ toJson(github.event.pull_request) }}
+            echo "${{ toJson(github.event.pull_request) }}"
 
       - name: Checkout del repositorio
         uses: actions/checkout@v3
