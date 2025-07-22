@@ -1,0 +1,23 @@
+name: Obtener metadatos de PR
+
+on:
+  workflow_dispatch: 
+    inputs: 
+        numero_pr: 
+            description: Numero de Pull Request
+            type: string
+            required: true
+
+jobs:
+  read-pr-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Leer labels y reviewers con GitHub CLI
+        run: |
+          echo "Labels del PR:"
+          echo "$(gh pr view ${{ inputs.numero_pr }})"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
