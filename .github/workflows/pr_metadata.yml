@@ -12,6 +12,8 @@ jobs:
         run: |
             echo "Event Object"
             echo "${{ toJson(github.event.pull_request) }}"
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
 
       - name: Checkout del repositorio
         uses: actions/checkout@v3
@@ -24,5 +26,3 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        # env:
-        #   LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
