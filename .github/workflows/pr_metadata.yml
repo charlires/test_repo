@@ -21,6 +21,6 @@ jobs:
 
       - name: Leer labels del evento de github actions
         run: |
-            echo "${{ toJson(github.event.pull_request) }}"
+            echo "${{ toJson(github.event.pull_request) }}" | jq .
         # env:
         #   LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
