@@ -1,4 +1,4 @@
-name: Obtener metadatos de PR
+name: otro nombre
 
 on:
   workflow_dispatch: 
