@@ -1,0 +1,19 @@
+name: 'Mi GH Action'
+description: 'Esta es una action de prueba'
+inputs:
+  name_required:
+    required: true
+    default: "carlos"
+    type: string
+  name_not_required: 
+    required: true
+    default: "carlos"
+    type: string
+runs:
+  using: "composite"
+  steps:
+    - name: asdf
+      shell: bash
+      run: |
+        echo "Required: ${{ inputs.name_required }}"
+        echo "Not Required: ${{ inputs.name_not_required }}"
