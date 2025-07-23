@@ -13,6 +13,7 @@ func barHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, "bar")
 }
 
+// main function
 func main() {
     port := os.Getenv("PORT")
     if port == "" {
