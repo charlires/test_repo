@@ -8,14 +8,21 @@ jobs:
   read-pr-metadata:
     runs-on: ubuntu-latest
     steps:
+      - name: Leer labels del evento de github actions
+        run: |
+            echo "Event Object"
+            echo "${{ toJson(github.event.pull_request) }}"
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
       - name: Leer labels y reviewers con GitHub CLI
         run: |
           echo "Labels del PR:"
-          gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name'
+          echo "$(gh pr view ${{ env.PR_NUMBER }})"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
