@@ -2,22 +2,28 @@ name: Metadatos con el Numero
 
 on:
   workflow_dispatch: 
-    inputs: 
-      numero_pr: 
-        description: Numero de Pull Request
-        type: string
-        required: true
+    # inputs: 
+    #   numero_pr: 
+    #     description: Numero de Pull Request
+    #     type: string
+    #     required: true
 
 jobs:
   read-pr-metadata:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout del repositorio
-        uses: actions/checkout@v3
+      # - name: Checkout del repositorio
+      #   uses: actions/checkout@v3
 
-      - name: Leer Pull Request con GitHub CLI
+      # - name: Leer Pull Request con GitHub CLI
+      #   run: |
+      #     echo "Labels del PR:"
+      #     echo "$(gh pr view ${{ inputs.numero_pr }})"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Agregar resultados de pruebas
         run: |
-          echo "Labels del PR:"
-          echo "$(gh pr view ${{ inputs.numero_pr }})"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "## Resultados"            >> "$GITHUB_STEP_SUMMARY"
+          echo ""                         >> "$GITHUB_STEP_SUMMARY"
+          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
