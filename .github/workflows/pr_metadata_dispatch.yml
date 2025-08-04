@@ -28,6 +28,9 @@ jobs:
           echo ""                         >> "$GITHUB_STEP_SUMMARY"
           echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
           
+  read-pr-metadata2:
+    runs-on: ubuntu-latest
+    steps:
       - name: Agregar resultados de pruebas
         run: |
           echo "## Resultados 2"            >> "$GITHUB_STEP_SUMMARY"
