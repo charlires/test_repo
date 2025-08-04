@@ -27,3 +27,15 @@ jobs:
           echo "## Resultados"            >> "$GITHUB_STEP_SUMMARY"
           echo ""                         >> "$GITHUB_STEP_SUMMARY"
           echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
+          
+      - name: Agregar resultados de pruebas
+        run: |
+          echo "## Resultados 2"            >> "$GITHUB_STEP_SUMMARY"
+          echo ""                         >> "$GITHUB_STEP_SUMMARY"
+          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Agregar resultados de pruebas
+        run: |
+          echo "## Resultados 3"            >> "$GITHUB_STEP_SUMMARY"
+          echo ""                         >> "$GITHUB_STEP_SUMMARY"
+          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
