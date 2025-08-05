@@ -10,7 +10,7 @@ jobs:
       - name: Agregar resultados de pruebas
         run: |
           #Cabeceras
-          echo "# H1"
+          echo "# H1" >> "$GITHUB_STEP_SUMMARY"
           echo "## H2" >> "$GITHUB_STEP_SUMMARY"
           echo "### H3" >> "$GITHUB_STEP_SUMMARY"
 
