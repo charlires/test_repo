@@ -7,36 +7,25 @@ jobs:
   default:
     runs-on: ubuntu-latest
     steps:
-
       - name: Agregar resultados de pruebas
         run: |
-          echo "## Resultados"            >> "$GITHUB_STEP_SUMMARY"
-          echo "lorem ipsum dolor sit amet, consectetur adipiscing elit." >> "$GITHUB_STEP_SUMMARY"
+          #Cabeceras
+          echo "# H1"
+          echo "## H2" >> "$GITHUB_STEP_SUMMARY"
+          echo "### H3" >> "$GITHUB_STEP_SUMMARY"
+
+          # links
           echo "<https://example.com>" >> "$GITHUB_STEP_SUMMARY"
           echo "![Alt text](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzIxa2R4ZTVsbHNhNzFzZWpvNm0xZDlpNzQxMHpicmx4dzh4eXR3dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vFKqnCdLPNOKc/giphy.gif)" >> "$GITHUB_STEP_SUMMARY"
-          # text formatting
-          echo "normal"                         >> "$GITHUB_STEP_SUMMARY"
-          echo "**bold**"                     >> "$GITHUB_STEP_SUMMARY
-          echo "*italic*"                     >> "$GITHUB_STEP_SUMMARY
-          echo "~~strikethrough~~"            >> "$GITHUB_STEP_SUMMARY
-          echo ""                         >> "$GITHUB_STEP_SUMMARY"
-          echo "| Test Type | Result |" >> "$GITHUB_STEP_SUMMARY"
-          echo "|-----------|--------|" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Unit      | 120/120 ✅ |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Integration | 50/50 ✅ |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| E2E      | 30/30 ✅ |" >> "$G
-          
-  read-pr-metadata2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Agregar resultados de pruebas
-        run: |
-          echo "## Resultados 2"            >> "$GITHUB_STEP_SUMMARY"
-          echo ""                         >> "$GITHUB_STEP_SUMMARY"
-          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Agregar resultados de pruebas
-        run: |
-          echo "## Resultados 3"            >> "$GITHUB_STEP_SUMMARY"
-          echo ""                         >> "$GITHUB_STEP_SUMMARY"
-          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
+          # Texto
+          echo "normal" >> "$GITHUB_STEP_SUMMARY"
+          echo "**bold**" >> "$GITHUB_STEP_SUMMARY"
+          echo "*italic*" >> "$GITHUB_STEP_SUMMARY"
+          echo "~~strikethrough~~" >> "$GITHUB_STEP_SUMMARY"
+
+          # tabla
+          echo "| Test Type   | Result |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|-------------|--------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Unit        | 120/120 ✅ |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Integration | 50/50 ✅ |" >> "$GITHUB_STEP_SUMMARY"
