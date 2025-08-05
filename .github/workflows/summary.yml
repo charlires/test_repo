@@ -23,8 +23,6 @@ jobs:
           echo "**bold**" >> "$GITHUB_STEP_SUMMARY"
           echo "*italic*" >> "$GITHUB_STEP_SUMMARY"
           echo "~~strikethrough~~" >> "$GITHUB_STEP_SUMMARY"
-          echo "- bullet1" >> "$GITHUB_STEP_SUMMARY"
-          echo "- bullet2" >> "$GITHUB_STEP_SUMMARY"
 
           # tabla
           echo "| Test Type   | Result |" >> "$GITHUB_STEP_SUMMARY"
