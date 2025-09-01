@@ -1,0 +1,48 @@
+name: Metadatos con el Numero
+
+on:
+  workflow_dispatch: 
+    # inputs: 
+    #   numero_pr: 
+    #     description: Numero de Pull Request
+    #     type: string
+    #     required: true
+
+jobs:
+  read-pr-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Checkout del repositorio
+      #   uses: actions/checkout@v3
+
+      # - name: Leer Pull Request con GitHub CLI
+      #   run: |
+      #     echo "Labels del PR:"
+      #     echo "$(gh pr view ${{ inputs.numero_pr }})"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Agregar resultados de pruebas
+        run: |
+          echo "## Resultados"            >> "$GITHUB_STEP_SUMMARY"
+          echo ""                         >> "$GITHUB_STEP_SUMMARY"
+          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
+          echo "<hr>"                     >> "$GITHUB_STEP_SUMMARY"
+          echo "- Integration: 50/50 ✅"  >> "$GITHUB_STEP_SUMMARY"
+          echo "<hr>"                     >> "$GITHUB_STEP_SUMMARY"
+          echo "- E2E: 30/30 ✅"          >> "$GITHUB_STEP_SUMMARY"
+          
+  read-pr-metadata2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Agregar resultados de pruebas
+        run: |
+          echo "## Resultados 2"            >> "$GITHUB_STEP_SUMMARY"
+          echo ""                         >> "$GITHUB_STEP_SUMMARY"
+          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Agregar resultados de pruebas
+        run: |
+          echo "## Resultados 3"            >> "$GITHUB_STEP_SUMMARY"
+          echo ""                         >> "$GITHUB_STEP_SUMMARY"
+          echo "- Unit: 120/120 ✅"       >> "$GITHUB_STEP_SUMMARY"
