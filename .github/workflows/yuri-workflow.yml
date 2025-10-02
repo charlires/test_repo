@@ -9,14 +9,26 @@ jobs:
   test1:
     runs-on: ubuntu-latest
     steps:
+      - name: set to putput
+        id: step1
+        run: echo "language=go" >> $GITHUB_OUTPUT
+      # - name: code checkout
+      #   uses: actions/checkout@v3
+
+      # - name: set up Go
+      #   uses: actions/setup-go@v4
+      #   with:
+      #     go-version: '1.20'
+
+      # - name: run yuri script
+      #   run: |
+      #     go run main.go
+    
+  test2: 
+    runs-on: ubuntu-latest
+    needs: test1
+    steps:
       - name: code checkout
-        uses: actions/checkout@v3
-
-      - name: set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: '1.20'
-
-      - name: run yuri script
-        run: |
-          go run main.go
+        run: echo $LANGUAGE
+        env:
+          LANGUAGE: ${{ needs.test1.outputs.language }}
