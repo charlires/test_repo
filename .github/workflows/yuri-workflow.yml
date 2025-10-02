@@ -12,15 +12,6 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v3
 
-      - name: hello
+      - name: run yuri script
         run: |
-          echo "Hello Yuri"
-
-      - name: list
-        run: |
-          ls -al
-
-      - name: script
-        shell: bash
-        run: |
-          # bash script
+          go run main.go
