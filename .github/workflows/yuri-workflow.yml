@@ -6,9 +6,9 @@ on:
   workflow_dispatch: # reusable workflow
         
 
-environment:
-  name: test
-  url: https://example.com
+# environment:
+#   name: test
+#   url: https://example.com
 
 jobs:
   test1:
