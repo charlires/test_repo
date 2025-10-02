@@ -4,6 +4,12 @@
 # tags
 on:
   workflow_dispatch: # reusable workflow
+  inputs:
+    nombre:
+      description: 'Nombre de usuario'
+      required: true
+      default: 'yuri'
+      type: string
         
 
 # environment:
