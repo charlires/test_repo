@@ -1,9 +1,26 @@
+# events
+# pull_requests
+# push
+# tags
 on:
-  workflow_dispatch:
+  workflow_dispatch: # reusable workflow
         
 jobs:
   test1:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: code checkout
+        uses: actions/checkout@v3
+
+      - name: hello
+        run: |
           echo "Hello Yuri"
+
+      - name: list
+        run: |
+          ls -al
+
+      - name: script
+        shell: bash
+        run: |
+          # bash script
