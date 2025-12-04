@@ -14,6 +14,21 @@ jobs:
         runs-on: ubuntu-latest
         steps:
 
+
+          - name: Read Environment Variables
+            shell: python
+            run: |
+              import os
+
+              print("GITHUB_REPOSITORY:", os.getenv('GITHUB_REPOSITORY'))
+              print("GITHUB_EVENT_NAME:", os.getenv('GITHUB_EVENT_NAME'))
+              print("GITHUB_SHA:", os.getenv('GITHUB_SHA')) 
+
+            env: 
+              GITHUB_REPOSITORY: ${{ github.repository }}
+              GITHUB_EVENT_NAME: ${{ github.event_name }}
+              GITHUB_SHA: ${{ github.sha }}
+           
           - name: Write to output
             id: python_step
             shell: python
