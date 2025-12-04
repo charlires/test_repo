@@ -13,6 +13,20 @@ jobs:
     comment-on-pr:
         runs-on: ubuntu-latest
         steps:
+          - name: working with files in python
+            shell: python
+            run : |
+              import os
+
+              # Create and write to a file
+              with open('example.txt', 'w') as f:
+                  f.write('Hello, World!')
+
+              # Read from the file
+              with open('example.txt', 'r') as f:
+                  content = f.read()
+                  print("File content:", content)
+                  
           - shell: python
             run : |
               import os
@@ -69,3 +83,5 @@ jobs:
                     time.sleep(2)
                   else:
                     print("All attempts failed.")
+
+        
