@@ -13,8 +13,9 @@ jobs:
     comment-on-pr:
         runs-on: ubuntu-latest
         steps:
-
-
+          - name: Checkout repository
+            uses: actions/checkout@v3
+            
           - name: Read Environment Variables
             shell: python
             run: |
@@ -29,7 +30,7 @@ jobs:
               GITHUB_EVENT_NAME: ${{ github.event_name }}
               GITHUB_SHA: ${{ github.sha }}
            
-          - name: Write to output
+          - name: Write to OUTPUT
             id: python_step
             shell: python
             run : |
@@ -59,10 +60,7 @@ jobs:
               echo "The version from Python is: ${{ steps.python_step.outputs.version }}"
               echo "The timestamp from Python is: ${{ steps.python_step.outputs.time }}"
 
-          - name: Checkout repository
-            uses: actions/checkout@v3
-
-          - name: working with files in python
+          - name: Read and Write files
             shell: python
             run : |
               import os
@@ -81,7 +79,8 @@ jobs:
                   workflow_content = f.read()
                   print("Content of main.go:", workflow_content)
 
-          - shell: python
+          - name: run commands and parse outputs
+            shell: python
             run : |
               import os
               import subprocess
@@ -99,6 +98,10 @@ jobs:
               print("Failing command error (if any):", fail_result.stderr.strip())
               print("Failing command return code:", fail_result.returncode)
 
+          - name: Parse JSON and YAML outputs
+            shell: python
+            run : |
+              import subprocess
               # Example parsing json output
               json_result = subprocess.run(['echo', '{"key": "value"}'], capture_output=True, text=True)
               import json
@@ -113,6 +116,9 @@ jobs:
               print("Parsed YAML data:", yaml_data)
               print("Value for 'key':", yaml_data['key'])
 
+          - name: Implement retry logic
+            shell: python
+            run : |
               # Retry logic example (3 attempts or 1 minute timeout)
               import time
               max_retries = 3
