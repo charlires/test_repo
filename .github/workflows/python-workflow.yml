@@ -13,6 +13,37 @@ jobs:
     comment-on-pr:
         runs-on: ubuntu-latest
         steps:
+
+          - name: Write to output
+            id: python_step
+            shell: python
+            run : |
+              # STEP 1: Generate the output
+              import os
+              import time
+              
+              # 1. calculate some data
+              generated_version = "v1.2.3"
+              timestamp = str(int(time.time()))
+              
+              # 2. Prepare the key=value pairs
+              # format: name_of_output=value
+              
+              # 3. Write to the GITHUB_OUTPUT file
+              # We use 'a' (append) mode so we don't overwrite previous outputs
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+                  print(f"version={generated_version}", file=fh)
+                  print(f"time={timestamp}", file=fh)
+              
+              # Optional: Print to logs just so we can see it happening
+              print(f"Outputted: version={generated_version}, time={timestamp}")
+
+          # STEP 2: Use the output
+          - name: Read Output in Bash
+            run: |
+              echo "The version from Python is: ${{ steps.python_step.outputs.version }}"
+              echo "The timestamp from Python is: ${{ steps.python_step.outputs.time }}"
+
           - name: Checkout repository
             uses: actions/checkout@v3
 
