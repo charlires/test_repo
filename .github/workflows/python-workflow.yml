@@ -22,11 +22,11 @@ jobs:
               # run command to test 
               result = subprocess.run(['echo', '-n', 'Testing command execution'], capture_output=True, text=True)
               print("Command output:", result.stdout)
-              print("Command error (if any):", result.stderr)
+              print("Command error (if any):", result.stderr.strip())
               print("Command return code:", result.returncode)
 
               # Example of a failing command
               fail_result = subprocess.run(['ls', '/nonexistentpath'], capture_output=True, text=True)
               print("Failing command output:", fail_result.stdout)
-              print("Failing command error (if any):", fail_result.stderr)
+              print("Failing command error (if any):", fail_result.stderr.strip())
               print("Failing command return code:", fail_result.returncode)
