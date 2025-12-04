@@ -13,6 +13,9 @@ jobs:
     comment-on-pr:
         runs-on: ubuntu-latest
         steps:
+          - name: Checkout repository
+            uses: actions/checkout@v3
+
           - name: working with files in python
             shell: python
             run : |
@@ -26,7 +29,12 @@ jobs:
               with open('example.txt', 'r') as f:
                   content = f.read()
                   print("File content:", content)
-                  
+              
+              # Read an existing file 
+              with open('main.go', 'r') as f:
+                  workflow_content = f.read()
+                  print("Content of main.go:", workflow_content)
+
           - shell: python
             run : |
               import os
