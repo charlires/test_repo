@@ -1,4 +1,4 @@
-name: Python Code Test
+name: Main
 
 on:
     workflow_dispatch:
@@ -20,13 +20,13 @@ jobs:
               print("Hello, this is a placeholder for commenting on a PR.")
 
               # run command to test 
-              result = subprocess.run(['echo', 'Testing command execution'], capture_output=True, text=True)
+              result = subprocess.run(['echo', '-n', 'Testing command execution'], capture_output=True, text=True)
               print("Command output:", result.stdout)
               print("Command error (if any):", result.stderr)
               print("Command return code:", result.returncode)
 
               # Example of a failing command
-              result = subprocess.run(['exit', '1'], capture_output=True, text=True)
-              print("Command output:", result.stdout)
-              print("Command error (if any):", result.stderr)
-              print("Command return code:", result.returncode)
+              fail_result = subprocess.run(['ls', '/nonexistentpath'], capture_output=True, text=True)
+              print("Failing command output:", fail_result.stdout)
+              print("Failing command error (if any):", fail_result.stderr)
+              print("Failing command return code:", fail_result.returncode)
